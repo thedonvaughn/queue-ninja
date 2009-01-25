@@ -19,3 +19,4 @@ require 'controller/live_view'
 # Libs required by controller
 require 'lib/queueninja'
 require 'lib/ami'
+require 'lib/queue_log'

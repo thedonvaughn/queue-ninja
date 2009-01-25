@@ -23,6 +23,6 @@
       <br />
   <div style="font: normal 14px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;">Admin Tasks</div>
     <ul>
-	  <li><strong><a href="<%= R(MainController, :index, :logoffall => true) %>">Log</a></strong> all agents from all Queues.
-	  <li><strong><a href="<%= R(MainController, :index, :update => true) %>">Load Queue Log</a></strong> : <%=h @config['queueninja']['queue_log'].to_s %>
+	  <li><strong><a href="<%= R(MainController, :logoff_all_agents) %>">Log Off</a></strong> all agents from all Queues.
+	  <li><strong><a href="<%= R(MainController, :load_queuelog) %>">Load Queue Log</a></strong> : <%=h @config['queueninja']['queue_log'].to_s %>
     </ul>

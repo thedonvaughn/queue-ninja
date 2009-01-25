@@ -5,18 +5,27 @@
 #  map '/otherurl'
 # this will force the controller to be mounted on: /otherurl
 
+
 class MainController < Controller
   layout '/layouts/main'
   # the index action is called automatically when no other action is specified
   #
   def index
     @title = "Queue Ninja"
-	load_config
+	  load_config
   end
 
   # the string returned at the end of the function is used as the html body
   # if there is no template for the action. if there is a template, the string
   # is silently ignored
+  #
+  def load_queuelog
+    queue_log = QueueLog.new
+    results = queue_log.process_log_file
+    flash[:notice] = "Queue Log Processed and #{results} new record(s) loaded."
+    redirect Rs(:index)
+  end
+
   def notemplate
     "there is no 'notemplate.xhtml' associated with this action"
   end
@@ -24,7 +33,7 @@ class MainController < Controller
   private
 
   def load_config
-	@config ||= Queueninja.config
+	  @config ||= Queueninja.config
   end
 
 end
