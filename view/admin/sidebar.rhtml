@@ -1,0 +1,18 @@
+<p>
+  <h2>Admin Panel</h2>
+</p>
+
+<ul>
+  <li>
+    <a href="<%= R(AdminController, :edit_settings) %>">Modify Settings</a>
+  </li>
+  <li>
+  	<a href="<%= R(AgentsController, :index) %>">Edit Agents</a>
+  </li>
+  <li>
+  	<a href="<%= R(GroupsController, :index) %>">Edit Agent Groups</a>
+  </li>
+  <li>
+    <a href="<%= R(AdminController, :index) %>">Admin</a>
+  </li>
+</ul>

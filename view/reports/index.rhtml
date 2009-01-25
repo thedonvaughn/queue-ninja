@@ -1,0 +1,69 @@
+<!--    
+//    Copyright 2008 Jayson Vaughn 
+//    This file is part of Queue Ninja.
+
+//    Queue Ninja is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+
+//    Queue Ninja is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+              
+//    You should have received a copy of the GNU General Public License
+//    along with Queue Ninja.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div style="font: normal 14px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;">Full Report</div>
+<form action="<%= R(ReportsController, :full_report) %>" method="post">
+  Start Date: <br />
+  <input type="text" name="date_start" id="fr_begin"><br />
+  End Date: <br />
+  <input type="text" name="date_end" id="fr_end"><br />
+  <input type="submit" value="View Report">
+</form>
+<br />
+
+<div style="font: normal 14px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;">Queue Report</div>
+<form action="<%= R(ReportsController, :queue_report) %>" method="post">
+  Start Date: <br />
+  <input type="text" name="date_start" id="qr_begin"><br />
+  End Date: <br />
+  <input type="text" name="date_end" id="qr_end"><br />
+  <input type="submit" value="View Report">
+</form>
+<br />
+
+<div style="font: normal 14px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;">Agent Report</div>
+<form action="<%= R(ReportsController, :agent_report) %>" method="post">
+  Select Agent: <br />
+  <select id="agent_id" name="agent_id">
+    <% @agents.each do |agent| %>
+      <option value="<%= agent.id %>"><%= agent.channel.to_s %></option>
+    <% end %>
+  </select>
+  Start Date: <br />
+  <input type="text" name="date_start" id="ar_begin"><br />
+  End Date: <br />
+  <input type="text" name="date_end" id="ar_end"><br />
+  <input type="submit" value="View Report">
+</form>
+<br />
+
+<div style="font: normal 14px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;">Agent Group Report</div>
+<form action="<%= R(ReportsController, :group_report) %>" method="post">
+  Select Agent: <br />
+  <select id="group_id" name="group_id">
+    <% @groups.each do |group| %>
+      <option value="<%= group.id %>"><%= group.name.to_s %></option>
+    <% end %>
+  </select>
+  Start Date: <br />
+  <input type="text" name="date_start" id="gr_begin"><br />
+  End Date: <br />
+  <input type="text" name="date_end" id="gr_end"><br />
+  <input type="submit" value="View Report">
+</form>
+<br />

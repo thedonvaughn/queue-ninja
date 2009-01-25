@@ -1,0 +1,39 @@
+=========================================================
+Queue Nina
+Copyright (c) 2009 Jayson Vaughn (vaughn.jayson@gmail.com)
+Distributed under the terms of the GNU General Public License.
+==========================================================
+
+About
+-----
+Queue Ninja is an Asterisk Queue Reporting, Analysis, and Real-time Monitoring tool
+designed with the Ramaze web framework.
+
+Features include:
+  - Real-time, live view, of Asterisk queues updated seamlessly Javascript 
+  - Queue stats are collected in real-time using the Asterisk Manager Interface
+  - Load Asterisk's queue_log file into a database
+  - Run reports on agent and queue stats.  
+  - Partition agents in to "groups" for reporting needs..
+  - Export reports in csv format
+
+
+Requirements 
+------------
+In order to run Queue Ninja you will need:
+  - ruby (>= 1.8)
+  - rubygems
+  - ramaze 
+  - rack
+  - fastercsv rubygem
+
+
+      
+Installation
+------------  
+  - STILL UNDER HEAVY DEVELOPMENT.  
+  - Installation instructions coming soon.
+
+Support
+-------
+  - email: vaughn.jayson@gmail.com

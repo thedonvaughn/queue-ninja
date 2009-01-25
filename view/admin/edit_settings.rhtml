@@ -1,0 +1,60 @@
+<!--    
+//    Copyright 2008 Jayson Vaughn 
+//    This file is part of Queue Ninja.
+
+//    Queue Ninja is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+
+//    Queue Ninja is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+              
+//    You should have received a copy of the GNU General Public License
+//    along with Queue Ninja.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div style="font: normal 14px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;"> Settings</div>
+<br />
+
+<form action="<%= R(AdminController, :update_settings) %>" method="post">
+  <p>
+    <b>Asterisk server:</b><br />
+	<input type="text" name="queueninja[ast_server]" value="<%= @config['queueninja']['ast_server'] %>">
+  </p>
+
+  <p>
+    <b>AMI port:</b><br />
+	<input type="text" name="queueninja[ast_port]" value="<%= @config['queueninja']['ast_port'] %>">
+  </p>
+
+  <p>
+    <b>AMI username:</b><br />
+	<input type="text" name="queueninja[username]" value="<%= @config['queueninja']['username'] %>">
+  </p>
+
+  <p>
+    <b>AMI secret:</b><br />
+	<input type="text" name="queueninja[secret]" value="<%= @config['queueninja']['secret'] %>">
+  </p>
+
+  <p>
+    <b>Queue log:</b><br />
+	<input type="text" name="queueninja[queue_log]" value="<%= @config['queueninja']['queue_log'] %>">
+  </p>
+  <p>
+    <b>Service Level:</b> (Reports)<br />
+	<input type="text" name="queueninja[service_level]" value="<%= @config['queueninja']['service_level'] %>">
+  </p>
+  <input type="submit" value="Submit">
+</form>
+
+<br />
+<br />
+
+<a href="<%= R(AgentsController, :index) %>">Edit Agents</a> |
+<a href="<%= R(GroupsController, :index) %>">Edit Agent Groups</a>
+<br />
+<br /> 

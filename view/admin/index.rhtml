@@ -1,0 +1,53 @@
+<!--    
+//    Copyright 2008 Jayson Vaughn 
+//    This file is part of Queue Ninja.
+
+//    Queue Ninja is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+
+//    Queue Ninja is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+              
+//    You should have received a copy of the GNU General Public License
+//    along with Queue Ninja.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<div style="font: normal 14px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;">Queue Ninja Settings</div>
+<p>
+  <b>Asterisk server:</b>
+  <%=h @config['queueninja']['ast_server'] %>
+</p>
+
+<p>
+  <b>AMI port:</b>
+  <%=h @config['queueninja']['ast_port'] %>
+</p>
+
+<p>
+  <b>AMI username:</b>
+  <%=h @config['queueninja']['username'] %>
+</p>
+
+<p>
+  <b>AMI secret:</b>
+  <%=h @config['queueninja']['secret'] %>
+</p>
+
+<p>
+  <b>Queue log:</b>
+  <%=h @config['queueninja']['queue_log'] %>
+</p>
+<p>
+  <b>Service Level:</b> (Reports)
+  <%=h @config['queueninja']['service_level'] %>
+</p>
+
+<a href="<%= R(AdminController, :edit_settings) %>">Modify Settings</a> |
+<a href="<%= R(AgentsController, :index) %>">Edit Agents</a> |
+<a href="<%= R(GroupsController, :index) %>">Edit Agent Groups</a>
+<br />
+<br /> 
+

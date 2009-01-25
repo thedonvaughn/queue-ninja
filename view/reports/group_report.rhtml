@@ -1,0 +1,52 @@
+<!--    
+//    Copyright 2008 Jayson Vaughn 
+//    This file is part of Queue Ninja.
+
+//    Queue Ninja is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+
+//    Queue Ninja is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+              
+//    You should have received a copy of the GNU General Public License
+//    along with Queue Ninja.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div style="font: normal 14px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;">Group: <%=h @groupname %> Report: <%= "#{@bmonth}/#{@bday} #{@byear} - #{@emonth}/#{@eday} #{@eyear}" %></div>
+<br />
+<table align="center" width="100%">
+  <tr>
+    <th>Channel</th>
+    <th>First</th>
+    <th>Last</th>
+    <th>Total Calls</th>
+    <th>Talk Time</th>
+    <th>Login Time</th>
+    <th>Wait Time</th>
+    <th>Pause Time</th>
+    <th>Avg. Reso. Time</th>
+  </tr>
+<% @group.agents.each do |agent| %>
+  <tr>
+  <td><%=h agent.channel %></td>
+  <td><%=h agent.first %></td>
+  <td><%=h agent.last %></td>
+  <td><%=h agent.count_calls(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  <td><%=h agent.talk_time(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  <td><%=h agent.login_time(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  <td><%=h agent.wait_time(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  <td><%=h agent.pause_time(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  <td><%=h agent.average_reso_time(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+
+<form action="<%= R(ReportsController, :export_group_report, :bmonth => @bmonth, :bday => @bday, :byear => @byear, :emonth => @emonth, :eday => @eday, :eyear => @eyear, :groupname => @group.name.to_s) %>" method="post">
+	<input type="submit" value="Export CSV">
+</form>
+<br />

@@ -1,0 +1,87 @@
+<!--    
+//    Copyright 2008 Jayson Vaughn 
+//    This file is part of Queue Ninja.
+
+//    Queue Ninja is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+
+//    Queue Ninja is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+              
+//    You should have received a copy of the GNU General Public License
+//    along with Queue Ninja.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div style="font: normal 14px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;">Agent Report: <%= "#{@bmonth}/#{@bday} #{@byear} - #{@emonth}/#{@eday} #{@eyear}" %></div>
+<br />
+<table align="center" width="100%">
+  <tr>
+    <th>Channel</th>
+    <th>First</th>
+    <th>Last</th>
+    <th>Total Calls</th>
+    <th>Talk Time</th>
+    <th>Login Time</th>
+    <th>Wait Time</th>
+    <th>Pause Time</th>
+    <th>Avg. Reso. Time</th>
+  </tr>
+<% for agent in @agents %>
+  <tr>
+  <td><%=h agent.channel %></td>
+  <td><%=h agent.first %></td>
+  <td><%=h agent.last %></td>
+  <td><%=h agent.count_calls(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  <td><%=h agent.talk_time(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  <td><%=h agent.login_time(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  <td><%=h agent.wait_time(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  <td><%=h agent.pause_time(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  <td><%=h agent.average_reso_time(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<br />
+
+<div style="font: normal 14px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;">Queue Report: <%= "#{@bmonth}/#{@bday} #{@byear} - #{@emonth}/#{@eday} #{@eyear}" %></div>
+<br />
+<table align="center" width="100%">
+  <tr>
+    <th>Queue</th>
+    <th>Total Calls</th>
+    <th>Conn. Calls</th>
+    <th>Service Level</th>
+    <th>Avg. Wait (sec)</th>
+    <th>Avg. Resolv (sec)</th>
+    <th>Total Aband.</th>
+    <th>Short Aband.</th>
+    <th>Reg Aband.</th>
+    <th>Abandon Percentage</th>
+    <th>Avg. Aband. Time</th>
+  </tr>
+<% for queue in @queues %>
+  <tr>
+  <td><%=h queue.queue_name %></td>
+  <td><%=h queue.total_calls(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  <td><%=h queue.connected_calls(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  <td><%=h queue.service_level_percentage(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %>%</td>
+  <td><%=h queue.average_caller_wait_time(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  <td><%=h queue.average_caller_reso_time(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  <td><%=h queue.total_abandons(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  <td><%=h queue.short_abandons(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  <td><%=h queue.reg_abandons(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  <td><%=h queue.abandon_percentage(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %>%</td>
+  <td><%=h queue.average_caller_abandon_time(@bmonth, @bday, @byear, @emonth, @eday, @eyear) %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+
+<form action="<%= R(ReportsController, :export_full_report, :bmonth => @month, :bday => @bday, :byear => @byear, :emonth => @emonth, :eday => @eday, :eyear => @eyear) %>" method="post">
+  <input type="submit" value="Export CSV">
+</form>
+<br />
