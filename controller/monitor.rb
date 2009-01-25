@@ -10,7 +10,7 @@ class MonitorController < Controller
   # the index action is called automatically when no other action is specified
   #
   def index
-	@ami_conn = AMI.new
+	  @ami_conn = AMI.new
     @ami_conn.login
     @queues = @ami_conn.queue_status
     @ami_conn.logoff
@@ -18,7 +18,7 @@ class MonitorController < Controller
   end
 
   def live_view
-	@ami_conn = AMI.new
+	  @ami_conn = AMI.new
     @ami_conn.login
     @queues = @ami_conn.queue_status
     @ami_conn.logoff
@@ -26,13 +26,14 @@ class MonitorController < Controller
   end
 
   def logoff
-	queue = request[:queue]
-	agent = request[:agent]
-	@ami_conn = AMI.new
-	@ami_conn.login
-	@ami_conn.queueremove(:queue => queue.to_s, :interface => agent)
-	@ami_conn.logoff
-	redirect Rs(:index)
+    agent = request[:agent]
+    queue = request[:queue]
+	  ami_conn = AMI.new
+	  ami_conn.login
+	  ami_conn.queueremove(:queue => queue.to_s, :interface => agent.to_s)
+	  ami_conn.logoff
+    flash[:notice] = "Successfully logged off #{agent.to_s}!"
+	  redirect Rs(:index)
   end
 
   # the string returned at the end of the function is used as the html body

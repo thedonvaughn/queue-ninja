@@ -65,7 +65,7 @@
       <td><%= @queues[queue]['members'][agent]['calls_taken'] %></td>
       <td><%= Time.at(@queues[queue]['members'][agent]['lastcall'].to_f).strftime("%H:%M:%S") unless @queues[queue]['members'][agent]['lastcall'].to_f == 0.0 %></td>
       <td><%= @queues[queue]['members'][agent]['paused'] %></td>
-	  <td><a href="<%= R(MonitorController, :logoff, :agent => @queues[queue]['members'][agent]['agent'].to_s, :queue => queue.to_s) %>">Log Off</a></td>
+      <td><a href="<%= R(MonitorController, :logoff, :agent => @queues[queue]['members'][agent]['agent'].to_s, :queue => queue.to_s) %>">Log Off</a></td>
     </tr>
   <% end %>
   </table>

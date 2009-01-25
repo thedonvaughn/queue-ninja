@@ -26,6 +26,24 @@ class MainController < Controller
     redirect Rs(:index)
   end
 
+  def logoff_all_agents
+    ami_conn = AMI.new
+    ami_conn.login
+    ami_conn.logoffallagents
+    ami_conn.logoff
+    flash[:notice] = "Succesfully logged off all Agents from all Queues!"
+    redirect Rs(:index)
+  end
+
+  def reset_queues
+    ami_conn = AMI.new
+    ami_conn.login
+    ami_conn.reset_queue
+    ami_conn.logoff
+    flash[:notice] = "Succesfully logged restarted Asterisk queue stats"
+    redirect Rs(:index)
+  end
+
   def notemplate
     "there is no 'notemplate.xhtml' associated with this action"
   end
