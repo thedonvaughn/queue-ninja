@@ -55,13 +55,10 @@
         </div>
         <div id='footer'>
           <div id='left_footer'>
-            Queue Ninja &trade; &copy; 2009 Jayson Vaughn
+            <%= render_template('left_footer') %>
           </div>
           <div id='right_footer'>
-			      <a href="<%= R(MainController, :index) %>" title="Dashboard">Dashboard</a>
-			      <a href="<%= R(MonitorController, :index) %>" title="Monitor">Monitor</a>
-			      <a href="<%= R(ReportsController, :index) %>" title="Reports">Reports</a>
-			      <a href="<%= R(AdminController, :index) %>" title="Admin">Admin</a>
+            <%= render_template('right_footer') %>
           </div>
         </div>
       </div>

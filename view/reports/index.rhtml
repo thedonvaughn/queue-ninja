@@ -16,54 +16,63 @@
 //    along with Queue Ninja.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div style="font: normal 14px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;">Full Report</div>
-<form action="<%= R(ReportsController, :full_report) %>" method="post">
-  Start Date: <br />
-  <input type="text" name="date_start" id="fr_begin"><br />
-  End Date: <br />
-  <input type="text" name="date_end" id="fr_end"><br />
-  <input type="submit" value="View Report">
-</form>
+<fieldset>
+  <legend>Full Report</legend>
+   <form action="<%= R(ReportsController, :full_report) %>" method="post">
+     Start Date: <br />
+     <input type="text" name="date_start" id="fr_begin"><br />
+     End Date: <br />
+     <input type="text" name="date_end" id="fr_end"><br />
+     <input type="submit" value="View Report">
+   </form>
+</fieldset>
 <br />
 
-<div style="font: normal 14px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;">Queue Report</div>
-<form action="<%= R(ReportsController, :queue_report) %>" method="post">
-  Start Date: <br />
-  <input type="text" name="date_start" id="qr_begin"><br />
-  End Date: <br />
-  <input type="text" name="date_end" id="qr_end"><br />
-  <input type="submit" value="View Report">
-</form>
+<fieldset>
+  <legend>Queue Report</legend>
+    <form action="<%= R(ReportsController, :queue_report) %>" method="post">
+      Start Date: <br />
+      <input type="text" name="date_start" id="qr_begin"><br />
+      End Date: <br />
+      <input type="text" name="date_end" id="qr_end"><br />
+      <input type="submit" value="View Report">
+    </form>
+  </fieldset>
 <br />
 
-<div style="font: normal 14px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;">Agent Report</div>
-<form action="<%= R(ReportsController, :agent_report) %>" method="post">
-  Select Agent: <br />
-  <select id="agent_id" name="agent_id">
-    <% @agents.each do |agent| %>
-      <option value="<%= agent.id %>"><%= agent.channel.to_s %></option>
-    <% end %>
-  </select>
-  Start Date: <br />
-  <input type="text" name="date_start" id="ar_begin"><br />
-  End Date: <br />
-  <input type="text" name="date_end" id="ar_end"><br />
-  <input type="submit" value="View Report">
-</form>
+<fieldset>
+  <legend>Agent Report</legend>
+    <form action="<%= R(ReportsController, :agent_report) %>" method="post">
+      Select Agent: <br />
+      <select id="agent_id" name="agent_id">
+        <% @agents.each do |agent| %>
+          <option value="<%= agent.id %>"><%= agent.channel.to_s %></option>
+        <% end %>
+      </select>
+      <br />
+      Start Date: <br />
+      <input type="text" name="date_start" id="ar_begin"><br />
+      End Date: <br />
+      <input type="text" name="date_end" id="ar_end"><br />
+      <input type="submit" value="View Report">
+    </form>
+  </fieldset>
 <br />
 
-<div style="font: normal 14px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;">Agent Group Report</div>
-<form action="<%= R(ReportsController, :group_report) %>" method="post">
-  Select Agent: <br />
-  <select id="group_id" name="group_id">
-    <% @groups.each do |group| %>
-      <option value="<%= group.id %>"><%= group.name.to_s %></option>
-    <% end %>
-  </select>
-  Start Date: <br />
-  <input type="text" name="date_start" id="gr_begin"><br />
-  End Date: <br />
-  <input type="text" name="date_end" id="gr_end"><br />
-  <input type="submit" value="View Report">
-</form>
+<fieldset>
+  <legend>Agent Group Report</legend>
+    <form action="<%= R(ReportsController, :group_report) %>" method="post">
+      Select Agent: <br />
+      <select id="group_id" name="group_id">
+      <% @groups.each do |group| %>
+        <option value="<%= group.id %>"><%= group.name.to_s %></option>
+      <% end %>
+      </select>
+      Start Date: <br />
+      <input type="text" name="date_start" id="gr_begin"><br />
+      End Date: <br />
+      <input type="text" name="date_end" id="gr_end"><br />
+      <input type="submit" value="View Report">
+    </form>
+  </fieldset>
 <br />

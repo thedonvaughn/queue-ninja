@@ -23,7 +23,7 @@ a:hover { text-decoration:none;}
 #content { margin:0 auto; padding:0; width:780px;}
 #content h1 { margin:20px 0 0 0; text-transform:uppercase; font-size:20px; color:#000; font-weight:normal;}
 #text {float:left; width:530px; padding-left:20px;}
-#sidebar { background:url(images/sidebar_bg.png) repeat-x; margin:20px 0 0 560px; color:#6f6e6e; padding:20px; }
+#sidebar { background:url(images/sidebar_bg.png) repeat-x; margin:0px 0 0 560px; color:#6f6e6e; padding:10px; }
 #sidebar h2 {color:#348781; margin:0 0 15px 0; font-size:14px; font-weight:bold; text-transform:uppercase;}
 
 #footer {background:url(images/footer_bg.png) repeat-x #3f3e3e 0 2px; height:94px; margin-top:20px; clear:both;}
