@@ -1,0 +1,8 @@
+--- 
+queueninja: 
+  ast_server: localhost
+  ast_port: "5038"
+  queue_log: /var/log/asterisk/queue_log
+  service_level: "60.0"
+  username: username
+  secret: secret
